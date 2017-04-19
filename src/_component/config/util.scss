@@ -2,11 +2,11 @@
 // this let's other css classes extend it an dit's not present in css unless at
 // least one class extends it
 
-// %h123 {
-//   color: $color-dark;
-//   margin-top: 1.875rem;
-//   margin-bottom: 0.9375rem;
-// }
+%h123 {
+  color: $color-dark;
+  margin-top: 1.875rem;
+  margin-bottom: 0.9375rem;
+}
 // we'll use this for h4, h5 and h6 tags
 
 %h456 {
