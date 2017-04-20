@@ -1,0 +1,32 @@
+//- Blockquote
+  Use on multiple
+  +blockquote 9({
+    source: " Carol Enache",
+    link: 'http://ecarol.uk',
+    body: ['paragraph 1', 'paragraph 2']
+  })
+  
+  or on one line
+  +blockquote({source: 'Carol Enache', link: 'ecarol.uk', body: ['paragraph 1', 'paragraph 2 '] })
+  
+  CSS .blockquote, .blockquote-body, .blockquote-footer, .blockquote-source
+  source - [string] credit for quote
+  link - [string] link for credit
+
+mixin blockquote({source, link, body})
+  blockquote.blockquote&attributes(attributes)
+    //- if thw body is specified loop through each of itd values
+        and create a paragraph each time
+    if body
+      .blockquote-body
+        each paragraph in body
+          p=paragraph
+      //- if a source is present output it
+    if source 
+      footer.blockquote-footer
+        //- if a link is present create a link tag with target _blank
+            that will open in a new window when it's clicked
+        if link
+          a.blockquote-source(href=link target="_blank")=source
+        else
+          .blockquote-source= source
