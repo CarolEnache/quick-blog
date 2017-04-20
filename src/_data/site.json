@@ -1,0 +1,26 @@
+{
+  "copy": "2017 My Company",
+  "company": "My Company",
+  "side": [{
+    "title": "Info",
+    "itme": [{
+      "link": "/",
+      "label": "Quick Blog"
+    }, {
+      "link": "/about",
+
+    }, {
+      "link": "/contact",
+      "label": "Contact"
+    }]
+  }, {
+    "title": "Category",
+    "item": [{
+      "link": "/css",
+      "label": "CSS"
+    }, {
+      "link": "/html",
+      "label": "HTML"
+    }]
+  }]
+}
