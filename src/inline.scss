@@ -30,7 +30,7 @@
 // bigger. The 3Kb will be loaded an each page request, as it;s inline with the
 // HTML code, and those 9Kb or more will be csched upon first visit and will
 // be quickly loaded starting with second page and forward
-
+@import '_component/config/variable';
 @import '_component/config/colour';
 @import '_component/config/util';
 @import '_layout/main-inline';

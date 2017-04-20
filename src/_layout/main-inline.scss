@@ -7,6 +7,8 @@
   box-sizing: border-box;
 }
 
+@import '../_component/continue/continue';
+
 // in order for something to be able to have height 100%
 // it's paren and all other containers must have a height set
 // so we start with htmk and body
