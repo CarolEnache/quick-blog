@@ -1,0 +1,28 @@
+//- Since the file, "index.pug" is located in scr/contact, to get the correct
+  path to the "main" layout, we'll use.. to go up one folder, into src,
+  followed by "_layout", the name of the folder and "main", the name of the file.
+extends ../_layout/main
+
+block config
+  - const cannonical = 'http://quick-blog.bitbee.uk/contact'
+  - const title = 'Contact Quick Blog'
+  - const description = 'Contact me'
+  
+block welcome
+  .welcome
+    h1=title
+    p.lead=description
+    include ../_component/continue/continue
+    
+block content
+  h2 Contact Information
+  p You can find me on those social media platforms:
+  ul
+    li #[+link({link: "https://www.facebook.com/enache.carol", text: "Facebook", tile: "Click to visit my Facebook account"})]
+    li #[+link({link: "https://twitter.com/enachecarol", text: "Twitter", title: "Click to visit my Twiter account"})]
+    li
+      +link({
+      link: "https://www.linkedin.com/in/carol-enache-59504294/",
+      text: "LinkedIn",
+      title: "Click to visit my LinkedIn account"
+      })
