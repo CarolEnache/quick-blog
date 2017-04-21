@@ -1,0 +1,17 @@
+[{
+  "title": "CSS/css-tutorial",
+  "link": "/article/css-tutorial",
+  "description": "CSS is a languagethat describes the style of an HTML elements should be displayed."
+}, {
+  "title": "CSS Introduction",
+  "link": "/article/css-introduction",
+  "description": "CSS stands fro Cascading Style Sheets"
+}, {
+  "title": "CSS Syntax and Selectors",
+  "link": "/article/css-syntax",
+  "description": "A CSS rule-set conists of a selector and a declaration blok"
+}, {
+  "title": "CSS Colors",
+  "link": "/article/css-colors",
+  "description": "HTML and CSS supports 140 standard color names."
+}]
