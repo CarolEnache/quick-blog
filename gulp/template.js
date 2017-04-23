@@ -2,59 +2,103 @@
 
 import fs from 'fs';
 import path from 'path';
-import { getJsonData } from './util/util';
+import mergeStream from 'merge-stream';
+import {
+  getJsonData
+}
+from './util/util';
+import {
+  getStaticFiles
+}
+from './util/util';
+import gulpConfig from './util/config';
 
 const template = ({
-  gulp,
-  taskTarget,
-  config,
-  plugins,
-  args,
-  browserSync
-}) => {
-  const dir = config.directory;
-  const dataPath = path.join(dir.source, dir.data);
-  const inlinePath = path.join(taskTarget, 'inline.css');
+    gulp,
+    taskTarget,
+    config,
+    plugins,
+    args,
+    browserSync
+  }) => {
+    const dir = config.directory;
+    const dataPath = path.join(dir.source, dir.data);
+    const templateColletion = dir.templateColletion
+    const inlinePath = path.join(taskTarget, 'inline.css');
 
-  gulp.task('template', () => {
-    let data = getJsonData({dataPath}) || {};
+    gulp.task('template', () => {
+          let data = getJsonData({
+            dataPath
+          }) || {};
+          let gulpStaticStreamCollection = templateColletion.map(folderName => {
+            let staticFilePath = path.join(
+              dir.source,
+              `_${folderNAme}`,
+              gulpConfig.fileExpression.copy
+            );
+            let dest = path.join(
+              taskTarget,
+              folderName
+            );
+            // Static files
+            return getStaticFiles({
+              gulp,
+              staticFilePath,
+              dest,
+              pligins
+            })
+          })
 
-    return gulp
-      // target pug files
-      .src([
-        path.join(dir.source, '**/*.pug'),
-        // Ignore files and folders that start with "_"
-        '!' + path.join(dir.source, '{**/\_*,**/\_*/**}')
-      ])
-      // Only deal with files that change in the pipeline
-      .pipe(plugins.changed(taskTarget))
-      .pipe(plugins.plumber())
-      // compile pug to html
-      .pipe(plugins.pug({
-        // compress if in production
-        pretty: args.production ? false: true,
-        // Make data available to pug
-        locals: {
-          config,
-          // debug: true,
-          data,
-          taskTarget,
-          inlinePath
-        }
-      }))
-      // Check if inline.css exists and use inlineSource to inject it
-      .on('error', error => {
-        console.error(error);
-      })
-      .pipe(plugins.if(
-        fs.existsSync(inlinePath),
-        plugins.inlineSource({
-          rootpath: path.join(__dirname, '..')
-        })
-      ))
-      .pipe(gulp.dest(path.join(taskTarget)))
-      .on('end', browserSync.reload);
-  });
-};
+          let gulpStaticStreamCollection = templateColletion.map(folderName => {
+            let templateData = getJsonData({
+              dataPath: path.join(dir.source, '_' + folderName)
+            }) || {};
 
-export default template;
+            return Object.keys(templateData)
+              .filter(value => {
+                return !(templateData[value] && templateData[value].config &&
+                  template[value].config.publish === false);
+              })
+
+            .map(value => {
+              return gulp.src(
+                  path.join(dir.source, '_' + folderName,
+                    'template.pug')
+                )
+                .pipe(plugins.plumber())
+                // .pipe(plugins.debug())
+                // compile pug to html
+                .pipe(plugins.pug({
+                  pretty: args.production ? false : true,
+                  // Make data availableto pug
+                  locals: {
+                    congig,
+                    // debag: true,
+                    data,
+                    template: templateData[value],
+                      taskTarget,
+                      inlinePath
+                  }
+                }))
+                .on('error', error => {
+                  console.error(error);
+                })
+                // Check is inline.css exists and use inlineSource to inject it
+                .pipe(plugins.if(
+                  fs.existsSync(inlinePath),
+                  plugins.inlineSource({
+                    rootpath: path.join(__dirname, '..')
+                  })
+                ))
+                .pipe(plugins.rename(
+                  config.render.url.htmlExtensionOn ? `${value}.html` :
+                  `${value}/index.html`
+                ))
+                .pipe(gulp.dest(path.join(tackTarget, folderName)))
+                .on('end', browserSync.reload);
+            });
+          });
+
+          return mergeStream(...gulpStreamCollection, ...gulpStaticStreamCollection);
+
+          export default template;
