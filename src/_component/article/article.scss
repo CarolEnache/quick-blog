@@ -3,7 +3,7 @@ $class: 'article';
 .#{$class}{
   padding: 1rem;
 
-  &nth-child(odd){
+  &:nth-child(odd){
     background-color: $color-athens-gray;
   }
 }
