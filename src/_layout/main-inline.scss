@@ -48,6 +48,6 @@ h1 {
   // and let its children be positioned one under the other
   flex-direction: colomn;
   // and generate a nice gradient as background
-  background-image: radial-gradient(elipse, $color-normal,$color-dark);
+  background-image: radial-gradient(ellipse, $color-normal,$color-dark);
 
 }
