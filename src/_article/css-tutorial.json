@@ -1,0 +1,35 @@
+{
+  "config": {
+    "publish": true
+  },
+  "head": {
+    "title": "CSS Tutorial",
+    "description": "CSS is a language that describes the stle of an HTML document and how HTML elements should be displayed."
+  },
+  "body": [{
+    "type": "h2",
+    "data": "What is CSS?"
+  }, {
+    "type": "blockquote",
+    "data": [
+      "CSS is a Language that describes the style of an HTML document.",
+      "CSS describes how HTML elements should be displayed.",
+      "This tutorial will tech you CSS from basic to advanced"
+    ]
+  }, {
+    "type": "h3",
+    "data": "Examples in Each Chater"
+  }, {
+    "type": "paragraph",
+    "data": [
+      "This CSS tutorial contains hundreds of CSS examples.",
+      "With our online editor, you can edit the CSS, and clik on a button to view the result."
+    ]
+  }, {
+    "type": "pre",
+    "title": "Example",
+    "data": [
+      "body {\n    background-color: lightblue;\n}\n\nh1 {\n    color: white;\n    text-align: center;\n}\n\np {\n    font-family: verdana;\n    font-size: 20px;\n}"
+    ]
+  }]
+}
