@@ -34,6 +34,20 @@ block content
   h2 Firstly, let's write some content
   p The source of Quick Blog can be sound on GitHub at #[+link({href: 'https://github.com/CarolEnache/quick-blog/commits/master', text: 'Quick Blog'})]
   
+  //- make use of the blockquote mixin
+  +blockquote({
+    source: 'Marian Zburlea',
+    link: 'http://bitbee.uk',
+    body: ['You dont\'t have to be good to start, you have to start to become good.']
+  })
+  
+  //- make use of the image mixin
+  +image({
+    filename: '/november.jpg',
+    caption: 'Leaves fall down in November',
+    autopath: true
+  })
+  
   //- Create a paragraph with a lead class
   
   p.lead Cum sociis natoque penatibus et magnis dis parturient montes, nascetur 
