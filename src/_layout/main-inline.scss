@@ -31,6 +31,15 @@ h1 {
   // align the text to center
   text-aling: center;
 }
+// configure
+p.lead{
+  // set the text lead paragraph
+  font-size: 1.875rem;
+  // and allow some margin
+  margin: 1rem;
+  // and align the text to center
+  text-align: center;
+}
 
 // this in an important class to help us achive
 //  100/100 google page speed insights score
