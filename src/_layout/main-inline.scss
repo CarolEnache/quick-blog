@@ -51,11 +51,11 @@ p.lead{
   min-height: 100%;
   // use display flex to position them horizontally
   // and vertically to center
-  display: felx;
+  display: flex;
   justify-content: center;
   align-items: center;
   // and let its children be positioned one under the other
-  flex-direction: colomn;
+  flex-direction: column;
   // and generate a nice gradient as background
   background-image: radial-gradient(ellipse, $color-normal,$color-dark);
 

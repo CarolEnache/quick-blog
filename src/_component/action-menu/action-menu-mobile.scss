@@ -1,14 +1,15 @@
+
 // the menu is valid to tablet too
 .#{$class}{
   position: fixed;
   bottom: 0;
   right: 0;
+  color: $color-white;
   background-color: $color-dark;
   border-radius: $border-radius;
   border: 0.2rem solid $color-white;
   margin:0.5rem;
   padding: 0.5rem;
-  color: $color-white;
   font-size: 1.125rem;
 
   &:hover{
@@ -34,7 +35,7 @@
 
 .#{$class}-link:hover,
 .#{$class}-link {
-  color: $color-white,inherit;
+  color: $color-white;
   display: flex;
   flex-direction: row;
   align-items: center;
